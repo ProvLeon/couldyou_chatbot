@@ -1,6 +1,8 @@
 # CouldYou? Cup AI Assistant
 
-![CouldYou? Cup](frontend/public/logo.png)
+<div align="center">
+   <img src="frontend/public/logo.png" alt="CouldYou? Cup" width="200" />
+</div>
 
 An intelligent chatbot system designed to provide information and support about menstrual health and the CouldYou? Cup. This project combines a modern React frontend with a Flask-powered AI backend to deliver accurate, compassionate responses to menstrual health questions.
 
