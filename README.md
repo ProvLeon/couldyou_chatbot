@@ -1,10 +1,24 @@
-# CouldYou? Cup AI Assistant
-
 <div align="center">
-   <img src="frontend/public/logo.png" alt="CouldYou? Cup" width="200" />
-</div>
+  <h1 style="border-bottom: none">
+    CouldYou? Cup AI Assistant
+  </h1>
+  <p style="font-size: 1.4em; font-weight: 300; margin-top: -0.5em; margin-bottom: 1em;">
+    Empowering Menstrual Health Knowledge
+  </p>
 
-An intelligent chatbot system designed to provide information and support about menstrual health and the CouldYou? Cup. This project combines a modern React frontend with a Flask-powered AI backend to deliver accurate, compassionate responses to menstrual health questions.
+  <img src="frontend/public/logo.png" alt="CouldYou? Cup" width="200" style="margin: 2em 0" />
+
+  <p style="max-width: 800px; margin: 1em auto;">
+    An intelligent chatbot system designed to provide information and support about menstrual health and the CouldYou? Cup. This project combines a modern React frontend with a Flask-powered AI backend to deliver accurate, compassionate responses to menstrual health questions.
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
+    <img src="https://img.shields.io/badge/powered%20by-Flask-blue.svg" alt="Powered by Flask" />
+    <img src="https://img.shields.io/badge/Made%20with-Next.js-000000.svg" alt="Made with Next.js" />
+  </p>
+</div>
 
 ## 🌟 Features
 
