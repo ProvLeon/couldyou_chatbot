@@ -8,10 +8,10 @@ import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { TypingIndicator } from "./TypingIndicator";
 
-interface ChatError extends Error {
-  status?: number;
-  code?: string;
-}
+// interface ChatError extends Error {
+//   status?: number;
+//   code?: string;
+// }
 
 export const ChatWindow = () => {
   const { state, dispatch } = useChat();
