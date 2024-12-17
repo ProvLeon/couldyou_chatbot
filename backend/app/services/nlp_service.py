@@ -95,7 +95,7 @@ class NLPService:
             "Always prioritize safety and proper usage instructions.",
             "\nABOUT COULDYOU?:",
             "CouldYou? is an organization dedicated to providing menstrual products and education to those in need.",
-            "This is the link to their website https://couldyou.org"
+            "This is the link to the website https://couldyou.org"
             "\nKEY FACTS:",
         ]
 
