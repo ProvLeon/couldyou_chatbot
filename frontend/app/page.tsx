@@ -8,11 +8,11 @@ export default function Home() {
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-8">
           <h1 className="text-3xl font-bold text-purple-600 mb-2">
-            CouldYou? Chat Assistant
+            CouldYou? Cup Chat Assistant
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Get answers to your questions about menstrual health and period
-            poverty
+            Get answers to your questions about CouldYou? Cup or anything
+            related to menstrual health.
           </p>
         </header>
         <ChatProvider>
