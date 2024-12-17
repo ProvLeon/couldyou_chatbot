@@ -7,6 +7,13 @@ import asyncio
 bp = Blueprint('main', __name__)
 chat_service = ChatService()
 
+@bp.route('/')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'message': 'CouldYou? Chat API is running'
+    })
+
 @bp.route('/api/chat', methods=['POST'])
 @error_handler
 def chat():
@@ -24,3 +31,18 @@ def chat():
 def clear_session(session_id):
     chat_service.chat_manager.clear_session(session_id)
     return jsonify({'status': 'success'})
+
+
+@bp.errorhandler(404)
+def not_found_error(error):
+    return jsonify({
+        'error': 'Not Found',
+        'message': 'The requested URL was not found on the server.'
+    }), 404
+
+@bp.errorhandler(500)
+def internal_error(error):
+    return jsonify({
+        'error': 'Internal Server Error',
+        'message': 'An unexpected error occurred.'
+    }), 500
