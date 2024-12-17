@@ -1,9 +1,9 @@
 "use client";
 // frontend/components/ChatWindow.tsx
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useChat } from "@/context/ChatContext";
 import { v4 as uuidv4 } from "uuid";
-import { LanguageSelector } from "./LanguageSelector";
+// import { LanguageSelector } from "./LanguageSelector";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { TypingIndicator } from "./TypingIndicator";
