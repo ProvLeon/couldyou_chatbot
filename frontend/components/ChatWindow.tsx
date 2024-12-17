@@ -12,6 +12,8 @@ import { TypingIndicator } from "./TypingIndicator";
 //   status?: number;
 //   code?: string;
 // }
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ||
+  "http://localhost:5000";
 
 export const ChatWindow = () => {
   const { state, dispatch } = useChat();
@@ -39,7 +41,7 @@ export const ChatWindow = () => {
     dispatch({ type: "SET_TYPING", payload: true });
 
     try {
-      const response = await fetch(`${process.env.BACKEND_URL}/api/chat`, {
+      const response = await fetch(`${BACKEND_URL}/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +65,6 @@ export const ChatWindow = () => {
         },
       });
     } catch (error: unknown) {
-      // Type guard for error handling
       let errorMessage = "Failed to send message. Please try again.";
 
       if (error instanceof Error) {
