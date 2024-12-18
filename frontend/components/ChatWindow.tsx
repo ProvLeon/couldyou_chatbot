@@ -12,8 +12,6 @@ import { TypingIndicator } from "./TypingIndicator";
 //   status?: number;
 //   code?: string;
 // }
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ||
-  "http://localhost:5000";
 
 export const ChatWindow = () => {
   const { state, dispatch } = useChat();
@@ -41,14 +39,15 @@ export const ChatWindow = () => {
     dispatch({ type: "SET_TYPING", payload: true });
 
     try {
-      const response = await fetch(`${BACKEND_URL}/api/chat`, {
+      const response = await fetch("/api/proxy", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: text, language: state.language }),
-        credentials: "include", // Include this if using cookies
-        mode: "cors", // Explicitly set CORS mode
+        body: JSON.stringify({
+          message: text,
+          language: state.language,
+        }),
       });
 
       if (!response.ok) {
@@ -68,13 +67,9 @@ export const ChatWindow = () => {
       });
     } catch (error: unknown) {
       let errorMessage = "Failed to send message. Please try again.";
-
       if (error instanceof Error) {
         errorMessage = `${errorMessage} ${error.message}`;
-      } else if (typeof error === "string") {
-        errorMessage = `${errorMessage} ${error}`;
       }
-
       dispatch({
         type: "SET_ERROR",
         payload: errorMessage,
