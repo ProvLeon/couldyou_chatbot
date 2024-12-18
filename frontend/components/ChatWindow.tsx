@@ -47,6 +47,8 @@ export const ChatWindow = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ message: text, language: state.language }),
+        credentials: "include", // Include this if using cookies
+        mode: "cors", // Explicitly set CORS mode
       });
 
       if (!response.ok) {
