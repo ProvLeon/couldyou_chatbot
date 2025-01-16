@@ -1,0 +1,15 @@
+# deployment/configs/telegram.service
+[Unit]
+Description=CouldYou Telegram Bot Service
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/couldyou/telegram
+Environment="PATH=/opt/couldyou/telegram/venv/bin"
+ExecStart=/opt/couldyou/telegram/venv/bin/python bot.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

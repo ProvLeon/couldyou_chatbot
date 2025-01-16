@@ -1,0 +1,11 @@
+# deployment/requirements/system.txt
+nginx
+python3.9
+python3.9-venv
+python3-pip
+supervisor
+git
+build-essential
+libssl-dev
+libffi-dev
+python3-dev
