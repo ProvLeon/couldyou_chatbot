@@ -36,9 +36,9 @@ pip install -r requirements.txt
 echo "Creating .env file..."
 cat > .env << EOF
 FLASK_ENV=production
-SECRET_KEY=your-secret-key-here
-GOOGLE_API_KEY=your-google-api-key-here
-MONGODB_URI=your-mongodb-uri-here
+TRANSFORMERS_CACHE="./model_cache"
+HF_HOME="./model_cache"
+GOOGLE_API_KEY="AIzaSyDlMO40t1n7kOVutn1CkSa-9CmWwodhOXI"
 EOF
 
 # Setup Nginx configuration
