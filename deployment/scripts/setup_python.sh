@@ -3,7 +3,7 @@
 set -e
 
 # Create Python virtual environments
-log "Creating virtual environments..."
+echo "Creating virtual environments..."
 
 # Backend venv
 python3.9 -m venv /opt/couldyou_chatbot/backend/venv
