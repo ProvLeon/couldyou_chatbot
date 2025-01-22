@@ -9,7 +9,7 @@ mkdir -p /opt/couldyou_chatbot/backend/logs
 chown -R www-data:www-data /opt/couldyou_chatbot/backend
 
 # Install systemd service
-cp /opt/couldyou_chatbot/deployment/configs/backend.service /etc/systemd/system/
+cp /opt/couldyou_chatbot/deployment/configs/couldyou-backend.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable couldyou-backend
 systemctl start couldyou-backend

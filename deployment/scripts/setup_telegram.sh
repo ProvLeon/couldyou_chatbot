@@ -9,7 +9,7 @@ mkdir -p /opt/couldyou_chatbot/telegram_bot/logs
 chown -R www-data:www-data /opt/couldyou_chatbot/telegram_bot
 
 # Install systemd service
-cp /opt/couldyou_chatbot/deployment/configs/telegram.service /etc/systemd/system/
+cp /opt/couldyou_chatbot/deployment/configs/couldyou-telegram.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable couldyou-telegram
 systemctl start couldyou-telegram
