@@ -19,7 +19,7 @@ sudo chown -R $USER:$USER /var/www/couldyou_chatbot
 
 # Clone or copy project files (adjust based on your source)
 echo "Copying project files..."
-cp -r couldyou_chatbot/* /var/www/couldyou_chatbot/
+cp -r $HOME/couldyou_chatbot/* /var/www/couldyou_chatbot/
 
 # Setup Python virtual environment
 echo "Setting up Python virtual environment..."
