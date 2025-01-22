@@ -52,7 +52,7 @@ server {
         proxy_pass http://unix:/var/www/couldyou_chatbot/backend/couldyou_chatbot.sock;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection 'upgrade';
+        proxy_set_header Connection "upgrade";
         proxy_set_header Host \$host;
         proxy_cache_bypass \$http_upgrade;
         proxy_set_header X-Real-IP \$remote_addr;
