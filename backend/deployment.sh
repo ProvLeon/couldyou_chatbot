@@ -100,3 +100,4 @@ sudo ufw allow ssh
 echo "Deployment completed!"
 echo "Please ensure you update the .env file with your actual credentials"
 echo "Your application should now be accessible at http://54.242.250.139"
+deactivate
