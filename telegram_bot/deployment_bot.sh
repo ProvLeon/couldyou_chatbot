@@ -19,9 +19,9 @@ check_python() {
 
 # Function to setup project directory
 setup_project_directory() {
-    if [ ! -d "/var/www/couldyou_chatbot" ]; then
+    if [ ! -d "/var/www/couldyou_chatbot/telegram_bot" ]; then
         echo "Creating project directory..."
-        sudo mkdir -p /var/www/couldyou_chatbot
+        sudo mkdir -p /var/www/couldyou_chatbot/telegram_bot
     fi
 
     echo "Setting directory permissions..."

@@ -14,7 +14,7 @@ sudo apt-get install -y python3.11 python3.11-venv python3.11-dev nginx supervis
 
 # Create project directory if it doesn't exist
 echo "Setting up project directory..."
-sudo mkdir -p /var/www/couldyou_chatbot
+sudo mkdir -p /var/www/couldyou_chatbot/backend
 sudo chown -R $USER:$USER /var/www/couldyou_chatbot
 
 # Clone or copy project files (adjust based on your source)
