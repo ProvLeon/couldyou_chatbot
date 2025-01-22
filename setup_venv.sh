@@ -3,7 +3,7 @@
 
 create_venv() {
     directory=$1
-    requirements=$2
+    requirements="$directory/backend/$2"
 
     echo "Creating virtual environment in $directory"
     python3.11 -m venv "$directory/venv"
