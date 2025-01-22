@@ -1,39 +1,4 @@
-# deployment/requirements/telegram.txt
-# Core Dependencies
 aiogram>=3.0.0
 python-dotenv>=0.19.0
-
-# Async and HTTP
 aiohttp>=3.8.1
-asyncio>=3.4.3
-async-timeout>=4.0.3
-
-# Formatting and Text Processing
-markdown>=3.5.1
-emoji>=2.8.0
-python-dateutil>=2.8.2
-
-# Development and Testing
-pytest>=8.3.4
-pytest-asyncio>=0.23.2
-black==23.12.1
-flake8==7.0.0
-
-# Monitoring and Logging
-prometheus-client>=0.19.0
-python-json-logger>=2.0.7
-
-# Security
-cryptography>=41.0.7
-PyJWT>=2.8.0
-
-# Error Handling
-traceback2>=1.4.0
-typing-extensions>=4.8.0
-
-# Production Server
 gunicorn==23.0.0
-
-# Optional Dependencies
-redis>=5.0.1  # For rate limiting and caching
-pillow>=10.0.0  # For image processing
