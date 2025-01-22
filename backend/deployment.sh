@@ -43,7 +43,7 @@ EOF
 
 # Setup Nginx configuration
 echo "Configuring Nginx..."
-sudo cat > /etc/nginx/sites-available/couldyou_chatbot << EOF
+sudo bash -c 'cat > /etc/nginx/sites-available/couldyou_chatbot << EOF
 server {
     listen 80;
     server_name 54.242.250.139;
@@ -59,7 +59,7 @@ server {
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     }
 }
-EOF
+EOF'
 
 # Enable the Nginx site
 sudo ln -sf /etc/nginx/sites-available/couldyou_chatbot /etc/nginx/sites-enabled/
@@ -67,7 +67,7 @@ sudo rm -f /etc/nginx/sites-enabled/default
 
 # Setup Supervisor configuration
 echo "Configuring Supervisor..."
-sudo cat > /etc/supervisor/conf.d/couldyou_chatbot.conf << EOF
+sudo bash -c 'cat > /etc/supervisor/conf.d/couldyou_chatbot.conf << EOF
 [program:couldyou_chatbot]
 directory=/var/www/couldyou_chatbot/backend
 command=/var/www/couldyou_chatbot/backend/venv/bin/gunicorn --workers 4 --bind unix:/var/www/couldyou_chatbot/backend/couldyou_chatbot.sock run:app
@@ -77,7 +77,7 @@ stderr_logfile=/var/log/couldyou_chatbot/gunicorn.err.log
 stdout_logfile=/var/log/couldyou_chatbot/gunicorn.out.log
 user=$USER
 environment=PATH="/var/www/couldyou_chatbot/backend/venv/bin"
-EOF
+EOF'
 
 # Create log directory
 sudo mkdir -p /var/log/couldyou_chatbot
