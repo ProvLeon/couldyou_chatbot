@@ -34,7 +34,7 @@ setup_bot() {
 
     # Copy bot files
     echo "Copying bot files..."
-    sudo cp -r couldyou_chatbot/telegram_bot/* /var/www/couldyou_chatbot/telegram_bot/
+    sudo cp -r  $HOME/couldyou_chatbot/telegram_bot/* /var/www/couldyou_chatbot/telegram_bot/
 
     # Setup virtual environment
     echo "Setting up Python virtual environment..."
