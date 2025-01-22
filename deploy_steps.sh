@@ -32,7 +32,7 @@ step2_python_setup() {
     # Backend virtual environment
     python3.11 -m venv backend/venv
     backend/venv/bin/pip install --upgrade pip
-    backend/venv/bin/pip install -r requirements.txt
+    backend/venv/bin/pip install -r backend/requirements.txt
 
     # Telegram bot virtual environment
     python3.11 -m venv telegram_bot/venv
