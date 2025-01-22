@@ -1,24 +1,13 @@
-# /etc/systemd/system/couldyou-telegram.service
 [Unit]
 Description=CouldYou Telegram Bot Service
 After=network.target
 
 [Service]
-Type=simple
 User=ubuntu
 Group=ubuntu
-WorkingDirectory=/home/ubuntu/couldyou_chatbot/telegram_bot
-Environment="PATH=/home/ubuntu/couldyou_chatbot/telegram_bot/venv/bin"
-EnvironmentFile=/home/ubuntu/couldyou_chatbot/.env
-ExecStart=/home/ubuntu/couldyou_chatbot/telegram_bot/venv/bin/python bot.py
-
-# Restart configuration
-Restart=always
-RestartSec=10
-StartLimitBurst=5
-
-StandardOutput=append:/var/log/couldyou_telegram.log
-StandardError=append:/var/log/couldyou_telegram.error.log
+WorkingDirectory=/opt/couldyou_chatbot/telegram_bot
+Environment="PATH=/opt/couldyou_chatbot/telegram_bot/venv/bin"
+ExecStart=/opt/couldyou_chatbot/telegram_bot/venv/bin/python bot.py
 
 [Install]
 WantedBy=multi-user.target

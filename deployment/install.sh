@@ -53,4 +53,33 @@ bash ${SCRIPT_DIR}/scripts/setup_backend.sh || error "Failed to setup Backend se
 log "Setting up Telegram bot service..."
 bash ${SCRIPT_DIR}/scripts/setup_telegram.sh || error "Failed to setup Telegram bot service"
 
+
+# Step 5: Verify installation
+step5_verify() {
+    log "Step 5: Verifying installation"
+
+    services=("nginx" "couldyou-backend" "couldyou-telegram")
+
+    for service in "${services[@]}"; do
+        if systemctl is-active --quiet "$service"; then
+            log "$service is running"
+        else
+            error "$service failed to start"
+        fi
+    done
+}
+
+
+# Main function
+main() {
+    # step1_system_setup
+    # step2_python_setup
+    # step3_create_services
+    # step4_setup_nginx
+    step5_verify
+}
+
+# Run main function
+main
+
 log "Installation completed successfully!"

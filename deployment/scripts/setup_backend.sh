@@ -1,6 +1,6 @@
 #!/bin/bash
 # deployment/scripts/setup_backend.sh
-sset -e
+set -e
 
 # Create logs directory
 mkdir -p /opt/couldyou_chatbot/backend/logs

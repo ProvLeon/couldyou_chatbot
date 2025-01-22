@@ -1,34 +1,13 @@
-# /etc/systemd/system/backend.service
 [Unit]
 Description=CouldYou Backend Service
 After=network.target
-StartLimitIntervalSec=0
 
 [Service]
-Type=simple
 User=ubuntu
 Group=ubuntu
-RuntimeDirectory=couldyou_backend
-LogsDirectory=couldyou_backend
-WorkingDirectory=/home/ubuntu/couldyou_chatbot/backend
-Environment=PATH=/home/ubuntu/couldyou_chatbot/backend/venv/bin
-EnvironmentFile=/home/ubuntu/couldyou_chatbot/.env
-
-# Pre-start checks
-ExecStartPre=/bin/bash -c 'test -d "/home/ubuntu/couldyou_chatbot/backend"'
-ExecStartPre=/bin/bash -c 'test -f "/home/ubuntu/couldyou_chatbot/.env"'
-ExecStartPre=/bin/bash -c 'test -d "/home/ubuntu/couldyou_chatbot/backend/venv"'
-
-ExecStart=/home/ubuntu/couldyou_chatbot/backend/venv/bin/gunicorn --workers 4 --bind 127.0.0.1:5000 run:app
-
-# Restart configuration
-Restart=always
-RestartSec=3
-StartLimitBurst=5
-
-# Security
-NoNewPrivileges=true
-PrivateTmp=true
+WorkingDirectory=/opt/couldyou_chatbot/backend
+Environment="PATH=/opt/couldyou_chatbot/backend/venv/bin"
+ExecStart=/opt/couldyou_chatbot/backend/venv/bin/gunicorn --workers 4 --bind 0.0.0.0:5000 run:app
 
 [Install]
 WantedBy=multi-user.target
