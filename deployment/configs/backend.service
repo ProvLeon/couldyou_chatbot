@@ -6,10 +6,12 @@ After=network.target
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=/opt/couldyou/backend
-Environment="PATH=/opt/couldyou/backend/venv/bin"
-ExecStart=/opt/couldyou/backend/venv/bin/gunicorn --workers 4 --bind 127.0.0.1:5000 run:app
+WorkingDirectory=/opt/couldyou_chatbot/backend
+Environment="PATH=/opt/couldyou_chatbot/backend/venv/bin"
+EnvironmentFile=/opt/couldyou_chatbot/.env
+ExecStart=/opt/couldyou_chatbot/backend/venv/bin/gunicorn --workers 4 --bind 127.0.0.1:5000 run:app
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

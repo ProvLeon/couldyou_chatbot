@@ -1,11 +1,44 @@
 # deployment/requirements/system.txt
+# Base System Requirements
 nginx
+supervisor
+git
+curl
+wget
+
+# Python and Development Tools
 python3.9
 python3.9-venv
 python3-pip
-supervisor
-git
+python3-dev
 build-essential
+
+# SSL and Security
 libssl-dev
 libffi-dev
-python3-dev
+
+# Database
+mongodb-org
+
+# System Utilities
+htop
+tmux
+vim
+logrotate
+
+# Networking Tools
+net-tools
+ufw
+
+# Monitoring and Logging
+prometheus
+node-exporter
+
+# SSL Certificates
+certbot
+python3-certbot-nginx
+
+# Compression and Archives
+zip
+unzip
+tar

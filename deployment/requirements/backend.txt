@@ -1,0 +1,47 @@
+# deployment/requirements/backend.txt
+# Core Framework Dependencies
+flask[async]==3.1.0
+flask-cors==5.0.0
+python-dotenv==1.0.1
+gunicorn==23.0.0
+Werkzeug>=3.0.1
+
+# Database
+pymongo==4.10.1
+motor==3.3.1  # Async MongoDB driver
+
+# AI/ML and NLP
+google-generativeai==0.3.0
+markdown==3.5.1
+markdown-it-py==3.0.0
+
+# Async Support
+aiohttp==3.9.1
+asyncio==3.4.3
+async-timeout==4.0.3
+
+# HTTP and Network
+requests>=2.31.0
+urllib3>=2.0.7
+
+# Security
+python-jose==3.3.0
+cryptography==41.0.7
+PyJWT>=2.8.0
+
+# Error Handling and Logging
+traceback2==1.4.0
+typing-extensions>=4.8.0
+python-json-logger==2.0.7
+
+# Performance Monitoring
+prometheus-client==0.19.0
+
+# Development Tools
+black==23.12.1
+isort==5.13.2
+flake8==7.0.0
+mypy==1.7.1
+pytest==8.3.4
+pytest-asyncio==0.23.2
+pytest-cov==4.1.0

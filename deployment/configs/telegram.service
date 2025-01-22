@@ -6,10 +6,12 @@ After=network.target
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=/opt/couldyou/telegram
-Environment="PATH=/opt/couldyou/telegram/venv/bin"
-ExecStart=/opt/couldyou/telegram/venv/bin/python bot.py
+WorkingDirectory=/opt/couldyou_chatbot/telegram_bot
+Environment="PATH=/opt/couldyou_chatbot/telegram_bot/venv/bin"
+EnvironmentFile=/opt/couldyou_chatbot/.env
+ExecStart=/opt/couldyou_chatbot/telegram_bot/venv/bin/python bot.py
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
