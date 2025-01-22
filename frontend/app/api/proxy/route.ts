@@ -15,6 +15,17 @@ export async function POST(request: Request) {
       body: JSON.stringify(body),
     });
 
+    if (!response.ok) {
+          console.error('Backend error:', response.status, response.statusText)
+          const errorText = await response.text()
+          console.error('Error details:', errorText)
+          return NextResponse.json(
+              { error: 'Backend error', details: errorText },
+              { status: response.status }
+          )
+      }
+
+
     const data = await response.json();
 
     // Return the response using NextResponse
