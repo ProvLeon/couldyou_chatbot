@@ -37,9 +37,10 @@ class NLPService:
                 }
             },
             "cup": {
-                "keywords": ["cup", "menstrual cup", "couldyou cup", "insert", "remove", "clean", "usage", "virgin", "how to use"],
-                "general": "The CouldYou? Cup is a reusable menstrual cup that can be worn for up to 12 hours.",
+                "keywords": ["cup", "menstrual cup", "couldyou cup", "insert", "remove", "clean", "usage", "virgin", "how to use", "capacity", "hold"],
+                "general": "The CouldYou? Cup is a reusable menstrual cup that can be worn for up to 12 hours and holds 3-5 times more menstrual flow than pads or tampons.",
                 "warranty": "10+ years shelf and use life",
+                "capacity": "Holds 3-5 times more menstrual flow than pads or tampons",
                 "insertion": [
                     "1. Wash hands thoroughly with soap and water",
                     "2. Find a comfortable position (sit, squat, kneel, or stand)",
@@ -52,20 +53,22 @@ class NLPService:
                     "2. Sit or squat and locate the base of the cup",
                     "3. Squeeze the base to break the seal",
                     "4. Gently remove while keeping upright",
-                    "5. Empty, rinse, and reinsert"
+                    "5. Empty, rinse if clean water available, and reinsert"
                 ],
                 "cleaning": [
                     "Do not use soap or bleach",
-                    "Rinse with clean water between uses",
-                    "Boil for 5 minutes for thorough cleaning",
-                    "Store in the provided cotton bag"
+                    "Boil for 5 minutes between cycles for thorough cleaning",
+                    "During your cycle, only rinse with water if you know it is clean water",
+                    "If clean water is not available, do not rinse - simply ensure clean hands for insertion and removal",
+                    "Store in the provided cotton bag between cycles"
                 ],
                 "safety": [
                     "Safe to wear for up to 12 hours",
                     "Made from medical-grade silicone",
                     "Does not affect virginity",
                     "Cannot get lost inside the body",
-                    "Very low risk of TSS compared to tampons"
+                    "Very low risk of TSS compared to tampons",
+                    "Can be used safely without rinsing if clean water is unavailable"
                 ]
             },
             "help": {
@@ -95,8 +98,13 @@ class NLPService:
             "Always prioritize safety and proper usage instructions.",
             "\nABOUT COULDYOU?:",
             "CouldYou? is an organization dedicated to providing menstrual products and education to those in need.",
-            "This is the link to the website https://couldyou.org"
-            "\nKEY FACTS:",
+            "This is the link to the website https://couldyou.org",
+            "\nKEY FEATURES:",
+            "- The cup holds 3-5 times more menstrual flow than pads or tampons",
+            "- Boil for 5 minutes between cycles for thorough cleaning",
+            "- During your cycle, only rinse with water if you know it is clean water",
+            "- If clean water is not available, do not rinse - just ensure clean hands for insertion and removal",
+            "\nKEY FACTS:"
         ]
 
         # Add statistics
@@ -108,6 +116,8 @@ class NLPService:
         context.append(self.knowledge_base["cup"]["general"])
         context.append("Safety Features:")
         context.extend([f"- {safety}" for safety in self.knowledge_base["cup"]["safety"]])
+        context.append("\nCleaning Instructions:")
+        context.extend([f"- {cleaning}" for cleaning in self.knowledge_base["cup"]["cleaning"]])
 
         return "\n".join(context)
 
