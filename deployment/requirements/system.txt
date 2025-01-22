@@ -1,4 +1,3 @@
-# deployment/requirements/system.txt
 nginx
 python3.9
 python3.9-venv
