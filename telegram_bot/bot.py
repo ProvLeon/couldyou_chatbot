@@ -33,7 +33,10 @@ def get_welcome_keyboard():
             InlineKeyboardButton(text="Safety Info", callback_data="safety")
         ],
         [
-            InlineKeyboardButton(text="FAQs", callback_data="faqs"),
+            InlineKeyboardButton(text="Cleaning Guide", callback_data="cleaning"),
+            InlineKeyboardButton(text="FAQs", callback_data="faqs")
+        ],
+        [
             InlineKeyboardButton(text="Contact Us", callback_data="contact")
         ]
     ]
@@ -98,13 +101,16 @@ async def send_faqs(message: types.Message):
         "*Is it safe to sleep with the cup?*\n"
         "Yes, you can safely wear it overnight\\.\n\n"
         "*What if I have heavy periods?*\n"
-        "The cup can hold 3\\-5 times more than tampons\\.\n\n"
+        "The cup can hold 3\\-5 times more than pads or tampons\\.\n\n"
         "*How long does the cup last?*\n"
         "With proper care, up to 10\\+ years\\.\n\n"
-        "*Can I use it with an IUD?*\n"
-        "Yes, but consult your healthcare provider first\\.\n\n"
         "*How do I clean it?*\n"
-        "Boil for 5 minutes between cycles, rinse with water during use\\.\n\n"
+        "• Boil for 5 minutes between cycles\n"
+        "• During use, only rinse with clean water\n"
+        "• If clean water isn't available, don't rinse \\- just ensure clean hands\n"
+        "• Never use soap or bleach\n\n"
+        "*What if I don't have access to clean water?*\n"
+        "You can safely use the cup without rinsing \\- just ensure your hands are clean\\.\n\n"
         "_Have more questions? Feel free to ask\\!_"
     )
 
@@ -223,6 +229,8 @@ async def handle_callback(callback_query: types.CallbackQuery):
         await send_faqs(callback_query.message)
     elif callback_query.data == "contact":
         await send_contact_info(callback_query.message)
+    elif callback_query.data == "cleaning":
+        await send_cleaning_guide(callback_query.message)
 
 async def send_usage_guide(message: types.Message):
     guide_text = (
@@ -231,11 +239,17 @@ async def send_usage_guide(message: types.Message):
         "1\\. Wash the cotton storage bag\n"
         "2\\. Boil the cup for 5 minutes\n"
         "3\\. Let it air dry\n\n"
-        "*To Insert:*\n"
+        "*Daily Use:*\n"
         "1\\. Wash hands thoroughly\n"
         "2\\. Fold the cup\n"
         "3\\. Insert gently\n"
         "4\\. Ensure it opens fully\n\n"
+        "*Cleaning During Use:*\n"
+        "• With clean water: Rinse between uses\n"
+        "• Without clean water: Use without rinsing, just keep hands clean\n"
+        "• Never use soap on the cup\n\n"
+        "*Capacity:*\n"
+        "Holds 3\\-5 times more than pads or tampons\n\n"
         "_Need more detailed instructions? Just ask\\!_"
     )
     await message.answer(
@@ -244,20 +258,50 @@ async def send_usage_guide(message: types.Message):
         reply_markup=get_website_keyboard()
     )
 
+async def send_cleaning_guide(message: types.Message):
+    cleaning_text = (
+        "🧼 *CouldYou? Cup Cleaning Guide*\n\n"
+        "*Between Cycles:*\n"
+        "• Boil the cup for 5 minutes\n"
+        "• Let it air dry completely\n"
+        "• Store in the provided cotton bag\n\n"
+        "*During Your Cycle:*\n"
+        "• *With Clean Water Available:*\n"
+        "  \\- Rinse with clean water between uses\n"
+        "  \\- Do not use soap or other cleaners\n\n"
+        "• *Without Clean Water:*\n"
+        "  \\- Keep your hands clean\n"
+        "  \\- Remove and empty cup\n"
+        "  \\- Reinsert without rinsing\n"
+        "  \\- This is safe as it's your own body fluids\n\n"
+        "*Important Notes:*\n"
+        "• Never use soap on the cup\n"
+        "• Never use bleach or harsh cleaners\n"
+        "• Clean hands are essential\n"
+        "• Store in breathable cotton bag\n\n"
+        "_Remember: Clean hands are more important than rinsing the cup\\!_"
+    )
+
+    await message.answer(
+        cleaning_text,
+        parse_mode=ParseMode.MARKDOWN_V2,
+        reply_markup=get_interactive_keyboard()
+    )
+
 def get_interactive_keyboard():
     """Create an interactive keyboard with common actions"""
     return InlineKeyboardMarkup(inline_keyboard=[
         [
             InlineKeyboardButton(text="📖 Usage Guide", callback_data="how_to_use"),
-            InlineKeyboardButton(text="❓ FAQs", callback_data="faqs")
+            InlineKeyboardButton(text="🧼 Cleaning", callback_data="cleaning")
         ],
         [
             InlineKeyboardButton(text="🛡️ Safety Info", callback_data="safety"),
-            InlineKeyboardButton(text="📞 Contact Us", callback_data="contact")
+            InlineKeyboardButton(text="❓ FAQs", callback_data="faqs")
         ],
         [
-            InlineKeyboardButton(text="🌐 Visit Website", url="https://couldyou.org"),
-            InlineKeyboardButton(text="📱 Share Feedback", callback_data="feedback")
+            InlineKeyboardButton(text="📞 Contact Us", callback_data="contact"),
+            InlineKeyboardButton(text="🌐 Website", url="https://couldyou.org")
         ]
     ])
 
@@ -280,8 +324,25 @@ async def send_long_message(message: types.Message, chunks: List[str]):
 
 
 
+CLEANING_KEYWORDS = [
+    "clean", "wash", "rinse", "water", "soap", "boil",
+    "sanitize", "sterilize", "dirty"
+]
+
+CAPACITY_KEYWORDS = [
+    "hold", "capacity", "amount", "heavy", "flow",
+    "compare", "pad", "tampon"
+]
+
 @dp.message()
 async def handle_message(message: types.Message):
+    text = message.text.lower()
+
+    # Check for specific topics
+    if any(keyword in text for keyword in CLEANING_KEYWORDS):
+        await send_cleaning_guide(message)
+        return
+
     user_id = str(message.from_user.id)
 
     await message.bot.send_chat_action(
